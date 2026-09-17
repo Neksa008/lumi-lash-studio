@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LUMI — студия наращивания ресниц</title>
+<meta name="description" content="Авторское наращивание ресниц: классика, мокрый эффект, 1,5D, 2D, 3D. Гипоаллергенные материалы, мастер с опытом от 5 лет. Запишитесь на процедуру.">
+<meta name="theme-color" content="#f4ead9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23c98a63'/%3E%3Cpath d='M14 38c6-14 30-14 36 0' stroke='%23fdf6ec' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='40' r='2.6' fill='%23fdf6ec'/%3E%3Ccircle cx='32' cy='44' r='2.6' fill='%23fdf6ec'/%3E%3Ccircle cx='48' cy='40' r='2.6' fill='%23fdf6ec'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================= RESET ============================= */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+img,video{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+input,textarea{font:inherit}
+
+/* ============================= TOKENS ============================= */
+:root{
+  --cream:#faf3e8;
+  --cream-2:#f2e6d3;
+  --sand:#e8d7ba;
+  --sand-2:#ddc7a3;
+  --mocha:#8a6b4f;
+  --mocha-dark:#6b5238;
+  --espresso:#3a2b1e;
+  --espresso-2:#2a1f16;
+  --rose:#c98a63;
+  --rose-dark:#af6f49;
+  --rose-light:#e8b896;
+  --gold:#d4a86a;
+  --cream-rgb:250,243,232;
+  --espresso-rgb:58,43,30;
+
+  --glass-bg:rgba(255,251,244,.55);
+  --glass-bg-strong:rgba(255,251,244,.78);
+  --glass-border:rgba(255,255,255,.65);
+  --glass-blur:22px;
+
+  --shadow-soft:0 8px 28px rgba(58,43,30,.10);
+  --shadow-lift:0 24px 64px rgba(58,43,30,.18);
+  --shadow-tight:0 2px 8px rgba(58,43,30,.10);
+
+  --radius-sm:16px;
+  --radius-md:24px;
+  --radius-lg:32px;
+  --radius-full:999px;
+
+  --container:760px;
+  --container-wide:1080px;
+
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-6:24px;--sp-8:32px;
+  --sp-12:48px;--sp-16:64px;--sp-24:96px;--sp-32:128px;
+
+  --fs-hero:clamp(2.6rem,5vw + 1.4rem,4.4rem);
+  --fs-h2:clamp(1.9rem,2.6vw + 1.1rem,2.7rem);
+  --fs-h3:clamp(1.25rem,1.2vw + 1rem,1.55rem);
+  --fs-lead:clamp(1.05rem,.6vw + .9rem,1.25rem);
+  --fs-label:.74rem;
+
+  --ease:cubic-bezier(.22,.9,.32,1);
+}
+
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  color:var(--espresso);
+  background:
+    radial-gradient(760px 520px at 88% -6%, rgba(201,138,99,.16), transparent 60%),
+    radial-gradient(640px 480px at -6% 18%, rgba(212,168,106,.14), transparent 55%),
+    linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+  background-attachment:fixed;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,.font-display{font-family:'Fraunces',Georgia,serif;color:var(--espresso);letter-spacing:-.01em}
+h1{font-weight:500}
+h2{font-weight:500}
+em{font-style:italic;color:var(--rose-dark)}
+
+.eyebrow{
+  font-size:var(--fs-label);
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--rose-dark);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:'';width:22px;height:1.5px;background:var(--rose);display:inline-block;border-radius:2px}
+
+.container{max-width:var(--container);margin-inline:auto;padding-inline:var(--sp-6)}
+.container-wide{max-width:var(--container-wide);margin-inline:auto;padding-inline:var(--sp-6)}
+
+section{padding-block:var(--sp-24)}
+.section-head{text-align:center;margin-bottom:var(--sp-12)}
+.section-head h2{margin-top:var(--sp-3)}
+.section-head p{color:var(--mocha-dark);max-width:52ch;margin:var(--sp-3) auto 0}
+
+/* ============================= GLASS ============================= */
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter:blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(1.3);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--shadow-soft);
+}
+.glass-strong{
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(28px) saturate(1.3);
+  -webkit-backdrop-filter:blur(28px) saturate(1.3);
+  border:1px solid var(--glass-border);
+}
+
+/* ============================= BUTTONS ============================= */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 30px;
+  border-radius:var(--radius-full);
+  font-weight:700;
+  font-size:.95rem;
+  white-space:nowrap;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--rose),var(--rose-dark));
+  color:#fff8f0;
+  box-shadow:0 10px 30px rgba(175,111,73,.38);
+}
+.btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 38px rgba(175,111,73,.46)}
+.btn-primary:active{transform:translateY(0) scale(.99)}
+.btn-ghost{
+  background:var(--glass-bg-strong);
+  border:1px solid rgba(58,43,30,.14);
+  color:var(--espresso);
+  backdrop-filter:blur(16px);
+}
+.btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft)}
+.btn-outline{
+  border:1.5px solid var(--rose);
+  color:var(--rose-dark);
+}
+.btn-outline:hover{background:rgba(201,138,99,.1);transform:translateY(-2px)}
+.btn-sm{padding:10px 20px;font-size:.85rem}
+.btn-block{width:100%}
+
+/* ============================= HEADER ============================= */
+.site-header{
+  position:sticky;top:0;z-index:100;
+}
+.header-inner{
+  max-width:var(--container-wide);
+  margin-inline:auto;
+  padding:14px var(--sp-6);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-radius:var(--radius-full);
+  background:var(--glass-bg);
+  backdrop-filter:blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(1.3);
+  border:1px solid var(--glass-border);
+  transition:background .3s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease), border-color .3s var(--ease);
+}
+.site-header.is-scrolled .header-inner{
+  background:var(--glass-bg-strong);
+  border-color:var(--glass-border);
+  box-shadow:var(--shadow-soft);
+  padding-block:10px;
+}
+.logo{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-style:italic;
+  font-size:1.5rem;
+  letter-spacing:.01em;
+  display:flex;align-items:baseline;gap:6px;
+}
+.logo small{font-family:'Manrope',sans-serif;font-style:normal;font-weight:600;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);opacity:.8}
+.header-right{display:flex;align-items:center;gap:10px}
+.rating-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;
+  border-radius:var(--radius-full);
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  font-weight:700;font-size:.85rem;
+  color:var(--rose-dark);
+  backdrop-filter:blur(16px);
+}
+.header-cta{display:none}
+@media (min-width:640px){.header-cta{display:inline-flex}}
+
+/* ============================= HERO ============================= */
+.hero{padding-top:var(--sp-8);padding-bottom:var(--sp-16)}
+.hero-inner{max-width:var(--container-wide);margin-inline:auto;padding-inline:var(--sp-6);position:relative}
+.hero-media{
+  position:relative;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  aspect-ratio:4/5;
+  box-shadow:var(--shadow-lift);
+}
+.hero-media::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(58,43,30,0) 40%, rgba(42,31,22,.55) 100%);
+}
+.hero-glass{
+  position:relative;z-index:2;
+  margin:-88px auto 0;
+  max-width:560px;
+  padding:var(--sp-8) var(--sp-8) var(--sp-8);
+  border-radius:var(--radius-lg);
+  text-align:center;
+}
+.hero-glass .eyebrow{justify-content:center}
+.hero-glass h1{font-size:var(--fs-hero);line-height:1.05;margin-top:var(--sp-3)}
+.hero-glass .subtitle{color:var(--mocha-dark);font-size:var(--fs-lead);margin-top:var(--sp-4)}
+.hero-actions{margin-top:var(--sp-6);display:flex;flex-direction:column;align-items:center;gap:var(--sp-3)}
+.hero-trust{font-size:.85rem;color:var(--mocha-dark);font-weight:600}
+.hero-trust .stars{color:var(--rose)}
+@media (min-width:860px){
+  .hero-media{aspect-ratio:21/9}
+  .hero-glass{margin-top:-120px}
+}
+
+/* ============================= DIFFERENCE ROWS ============================= */
+.diff-list{display:flex;flex-direction:column;position:relative}
+.diff-row{
+  display:grid;grid-template-columns:auto 1fr;gap:var(--sp-6);
+  padding-block:var(--sp-8);
+  position:relative;
+}
+.diff-row + .diff-row{border-top:1px solid rgba(58,43,30,.1)}
+.diff-num{
+  width:56px;height:56px;flex:none;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  color:var(--rose-dark);
+  box-shadow:var(--shadow-tight);
+}
+.diff-row h3{margin-bottom:6px}
+.diff-row p{color:var(--mocha-dark)}
+
+/* ============================= TABS / CATALOG ============================= */
+.tabs{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin-bottom:var(--sp-8);
+}
+.tab-btn{
+  padding:11px 22px;
+  border-radius:var(--radius-full);
+  font-weight:700;font-size:.9rem;
+  background:transparent;
+  border:1px solid rgba(58,43,30,.16);
+  color:var(--mocha-dark);
+  transition:all .25s var(--ease);
+}
+.tab-btn:hover{border-color:var(--rose)}
+.tab-btn.is-active{
+  background:linear-gradient(135deg,var(--rose),var(--rose-dark));
+  border-color:transparent;
+  color:#fff8f0;
+  box-shadow:0 8px 22px rgba(175,111,73,.35);
+}
+.tab-panel{
+  display:grid;grid-template-columns:1fr;gap:0;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+}
+.tab-panel-media{aspect-ratio:5/4}
+.tab-panel-body{padding:var(--sp-8)}
+.tab-panel-price{
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  font-family:'Fraunces',serif;font-size:1.8rem;color:var(--rose-dark);margin-bottom:4px;
+}
+.tab-panel-price .duration{font-family:'Manrope',sans-serif;font-size:.85rem;color:var(--mocha);font-weight:600}
+.tab-panel-body p{color:var(--mocha-dark);margin-block:var(--sp-4)}
+@media (min-width:760px){
+  .tab-panel{grid-template-columns:1fr 1fr;align-items:stretch}
+  .tab-panel-media{aspect-ratio:auto}
+  .tab-panel-body{display:flex;flex-direction:column;justify-content:center}
+}
+
+/* ============================= AVAILABILITY ============================= */
+.avail-card{
+  border-radius:var(--radius-lg);
+  padding:var(--sp-16) var(--sp-8);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.avail-card::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(420px 260px at 15% 20%, rgba(201,138,99,.28), transparent 60%),
+    radial-gradient(420px 300px at 90% 85%, rgba(212,168,106,.3), transparent 60%);
+}
+.avail-card h2{margin-bottom:var(--sp-3)}
+.avail-card p{color:var(--mocha-dark);max-width:42ch;margin:0 auto var(--sp-6)}
+.avail-dots{display:flex;justify-content:center;gap:10px;margin-bottom:var(--sp-6)}
+.avail-dot{width:10px;height:10px;border-radius:50%;background:var(--sand-2)}
+.avail-dot.is-open{background:var(--rose)}
+
+/* ============================= SCROLL STRIPS ============================= */
+.scroll-strip{
+  display:flex;gap:var(--sp-4);
+  overflow-x:auto;
+  padding:6px var(--sp-6) var(--sp-6);
+  margin:0 calc(var(--sp-6) * -1);
+  scroll-snap-type:x proximity;
+  overscroll-behavior-x:contain;
+  cursor:grab;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.scroll-strip::-webkit-scrollbar{display:none}
+.scroll-strip.dragging{cursor:grabbing;scroll-snap-type:none}
+.scroll-strip.dragging *{pointer-events:none}
+
+/* Portfolio */
+.pf-item{
+  flex:none;width:min(64vw,300px);
+  aspect-ratio:4/5;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  scroll-snap-align:center;
+  position:relative;
+  box-shadow:var(--shadow-tight);
+}
+.pf-item video,.pf-item img{width:100%;height:100%;object-fit:cover}
+.pf-item.is-video::after{
+  content:'▶';
+  position:absolute;top:12px;right:12px;
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(58,43,30,.45);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;backdrop-filter:blur(6px);
+}
+
+/* Reviews */
+.rv-item{
+  flex:none;width:min(80vw,340px);
+  border-radius:var(--radius-md);
+  padding:var(--sp-6);
+  scroll-snap-align:center;
+  display:flex;flex-direction:column;
+}
+.rv-head{display:flex;align-items:center;gap:12px;margin-bottom:var(--sp-3)}
+.rv-avatar{
+  width:44px;height:44px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-weight:600;color:#fff8f0;
+  background:linear-gradient(135deg,var(--rose),var(--gold));
+}
+.rv-name{font-weight:700;font-size:.95rem}
+.rv-stars{color:var(--rose);font-size:.8rem;letter-spacing:1px}
+.rv-text{
+  color:var(--mocha-dark);font-size:.92rem;
+  display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;
+  margin-bottom:var(--sp-3);flex:1;
+}
+.rv-more{align-self:flex-start;font-weight:700;font-size:.85rem;color:var(--rose-dark);border-bottom:1.5px solid currentColor}
+
+/* ============================= PROCESS ============================= */
+.process-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-8)}
+.process-step{position:relative;padding-left:var(--sp-16)}
+.process-step .diff-num{position:absolute;left:0;top:0}
+.process-step h3{margin-bottom:6px}
+.process-step p{color:var(--mocha-dark);font-size:.92rem}
+@media (min-width:820px){
+  .process-grid{grid-template-columns:repeat(4,1fr);gap:var(--sp-6)}
+  .process-step{padding-left:0;padding-top:76px}
+  .process-step .diff-num{left:50%;top:0;transform:translateX(-50%)}
+  .process-step{text-align:center}
+}
+
+/* ============================= ABOUT ============================= */
+.about-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-8);align-items:center}
+.about-photo{border-radius:var(--radius-lg);aspect-ratio:4/5;overflow:hidden;box-shadow:var(--shadow-soft)}
+.about-text p{color:var(--mocha-dark);margin-block:var(--sp-4)}
+.messenger-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:var(--sp-6)}
+.msg-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 20px;border-radius:var(--radius-full);
+  font-weight:700;font-size:.85rem;
+  background:var(--glass-bg-strong);border:1px solid var(--glass-border);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease);
+}
+.msg-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft)}
+.msg-btn svg{width:18px;height:18px}
+@media (min-width:820px){.about-grid{grid-template-columns:.8fr 1fr}}
+
+/* ============================= LOCATION ============================= */
+.location-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:center}
+.location-photo{border-radius:var(--radius-lg);aspect-ratio:16/11;overflow:hidden;box-shadow:var(--shadow-soft)}
+.location-text p{color:var(--mocha-dark);margin-block:var(--sp-2)}
+.location-text .addr{font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:var(--sp-2)}
+@media (min-width:820px){.location-grid{grid-template-columns:1.1fr .9fr}}
+
+/* ============================= FAQ ============================= */
+.faq-item{border-bottom:1px solid rgba(58,43,30,.12)}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:var(--sp-6) 4px;text-align:left;font-weight:700;font-size:1.02rem;
+}
+.faq-icon{
+  flex:none;width:26px;height:26px;position:relative;
+}
+.faq-icon::before,.faq-icon::after{
+  content:'';position:absolute;top:50%;left:50%;
+  width:14px;height:2px;background:var(--rose-dark);
+  transform:translate(-50%,-50%);
+  transition:transform .3s var(--ease),opacity .3s var(--ease);
+}
+.faq-icon::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-item.is-open .faq-icon::after{opacity:0;transform:translate(-50%,-50%) rotate(0deg)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.faq-a-inner{overflow:hidden}
+.faq-a p{color:var(--mocha-dark);padding:0 4px var(--sp-6);max-width:62ch}
+.faq-item.is-open .faq-a{grid-template-rows:1fr}
+
+/* ============================= AFTERCARE ============================= */
+.care-card{border-radius:var(--radius-lg);padding:var(--sp-8)}
+.care-list{display:grid;grid-template-columns:1fr;gap:var(--sp-4)}
+.care-list li{display:flex;gap:12px;align-items:flex-start}
+.care-check{
+  flex:none;width:26px;height:26px;border-radius:50%;margin-top:2px;
+  background:linear-gradient(135deg,var(--rose),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+}
+.care-check svg{width:13px;height:13px}
+.care-list p{color:var(--mocha-dark);font-size:.95rem}
+@media (min-width:760px){.care-list{grid-template-columns:1fr 1fr}}
+
+/* ============================= FOOTER ============================= */
+footer{
+  background:linear-gradient(180deg,var(--espresso) 0%,var(--espresso-2) 100%);
+  color:rgba(250,243,232,.86);
+  padding-block:var(--sp-24) var(--sp-12);
+  margin-top:var(--sp-16);
+}
+.footer-inner{max-width:var(--container-wide);margin-inline:auto;padding-inline:var(--sp-6)}
+.referral-card{
+  border-radius:var(--radius-lg);
+  padding:var(--sp-8);
+  background:rgba(250,243,232,.06);
+  border:1px solid rgba(250,243,232,.14);
+  text-align:center;
+  margin-bottom:var(--sp-16);
+}
+.referral-card h3{color:#fdf6ec;font-size:var(--fs-h3);margin-bottom:var(--sp-2)}
+.referral-card p{color:rgba(250,243,232,.7);max-width:46ch;margin:0 auto var(--sp-6)}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-8);margin-bottom:var(--sp-12)}
+.footer-col .logo{color:#fdf6ec}
+.footer-col .logo small{color:rgba(250,243,232,.6)}
+.footer-col p, .footer-col a{color:rgba(250,243,232,.7);font-size:.92rem}
+.footer-col h4{font-size:var(--fs-label);text-transform:uppercase;letter-spacing:.14em;color:rgba(250,243,232,.5);margin-bottom:var(--sp-4);font-weight:700}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a:hover{color:#fdf6ec}
+.social-row{display:flex;gap:10px;margin-top:var(--sp-4)}
+.social-btn{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(250,243,232,.08);border:1px solid rgba(250,243,232,.16);
+  transition:background .2s var(--ease),transform .2s var(--ease);
+}
+.social-btn:hover{background:rgba(250,243,232,.16);transform:translateY(-2px)}
+.social-btn svg{width:18px;height:18px}
+.footer-bottom{
+  border-top:1px solid rgba(250,243,232,.14);
+  padding-top:var(--sp-6);
+  display:flex;flex-wrap:wrap;gap:var(--sp-3);justify-content:space-between;
+  font-size:.8rem;color:rgba(250,243,232,.5);
+}
+@media (min-width:760px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr}}
+
+/* ============================= MODALS ============================= */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(42,31,22,.5);
+  backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  padding:var(--sp-6);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s var(--ease);
+}
+.modal-backdrop.is-open{opacity:1;pointer-events:auto}
+.modal{
+  width:100%;max-width:440px;
+  border-radius:var(--radius-lg);
+  padding:var(--sp-8);
+  transform:translateY(16px) scale(.97);
+  transition:transform .3s var(--ease);
+  max-height:86vh;overflow:auto;
+  position:relative;
+}
+.modal-backdrop.is-open .modal{transform:translateY(0) scale(1)}
+.modal-close{
+  position:absolute;top:18px;right:18px;
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(58,43,30,.08);
+  font-size:1.1rem;
+}
+.modal-close:hover{background:rgba(58,43,30,.14)}
+.modal h3{margin-bottom:var(--sp-2);padding-right:30px}
+.modal p{color:var(--mocha-dark);margin-bottom:var(--sp-6)}
+.modal .rv-head{margin-bottom:var(--sp-4)}
+.modal-actions{display:flex;flex-direction:column;gap:10px}
+
+/* ============================= PLACEHOLDERS ============================= */
+.ph{
+  position:relative;width:100%;height:100%;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--cream-2) 100%);
+}
+.ph img,.ph video{width:100%;height:100%;object-fit:cover;display:block}
+.ph--err img,.ph--err video{display:none}
+.ph::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.5), transparent 60%);
+  opacity:0;transition:opacity .2s;
+}
+.ph--err::after{
+  content:attr(data-file);
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:16px;font-size:.72rem;line-height:1.5;
+  color:var(--mocha-dark);font-weight:600;
+  font-family:'Manrope',sans-serif;
+  background:repeating-linear-gradient(135deg,var(--cream-2),var(--cream-2) 10px,var(--sand) 10px,var(--sand) 20px);
+}
+
+/* ============================= UTIL / REVEAL ============================= */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:639px){
+  section{padding-block:var(--sp-16)}
+  .hero-glass{padding:var(--sp-6)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================= HEADER ============================= -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="logo" href="#top" aria-label="LUMI — на главную">LUMI<small>lash studio</small></a>
+    <div class="header-right">
+      <span class="rating-badge">★ 4.9</span>
+      <button class="btn btn-primary btn-sm header-cta" data-open-booking>Записаться</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================= HERO ============================= -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-media ph" data-file="assets/photos/hero.webp">
+      <img src="assets/photos/hero.webp" alt="Мастер студии LUMI за работой" onerror="this.parentElement.classList.add('ph--err')">
+    </div>
+    <div class="hero-glass glass">
+      <span class="eyebrow">Студия наращивания ресниц</span>
+      <h1>Взгляд, который<br><em>запоминается</em></h1>
+      <p class="subtitle">Деликатное поресничное наращивание вручную — естественно, бережно и с любовью к деталям.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-open-booking>Записаться</button>
+        <div class="hero-trust"><span class="stars">★★★★★</span> 4.9 · 500+ довольных клиенток</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ЧЕМ ОТЛИЧАЕМСЯ ============================= -->
+<section id="difference">
+  <div class="container reveal">
+    <div class="section-head">
+      <span class="eyebrow">Почему выбирают нас</span>
+      <h2>Чем мы отличаемся</h2>
+    </div>
+    <div class="diff-list">
+      <div class="diff-row">
+        <div class="diff-num">01</div>
+        <div>
+          <h3>Как мы делаем</h3>
+          <p>Работаем поресничным методом вручную, без «клея-кирпича»: каждая ресничка приклеивается изолированно — носится дольше и не травмирует натуральные реснички.</p>
+        </div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-num">02</div>
+        <div>
+          <h3>Кто выполняет</h3>
+          <p>Мастер с профильным образованием и опытом от 5 лет, регулярно проходит обучение у топовых лэшмейкеров и следит за новыми техниками.</p>
+        </div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-num">03</div>
+        <div>
+          <h3>Материалы</h3>
+          <p>Гипоаллергенный клей и реснички премиальных корейских брендов — минимальный риск раздражения и стабильно долгая носка.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= КАТАЛОГ ЭФФЕКТОВ ============================= -->
+<section id="catalog">
+  <div class="container-wide reveal">
+    <div class="section-head">
+      <span class="eyebrow">Каталог эффектов</span>
+      <h2>Выберите свой образ</h2>
+      <p>Нажмите на эффект, чтобы увидеть фото, цену и описание</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Эффекты наращивания" id="effectTabs"></div>
+    <div class="tab-panel glass" id="effectPanel"></div>
+  </div>
+</section>
+
+<!-- ============================= СВОБОДНЫЕ ОКНА ============================= -->
+<section id="availability">
+  <div class="container reveal">
+    <div class="avail-card glass">
+      <span class="eyebrow">Запись</span>
+      <h2>Свободные окна на этой неделе</h2>
+      <p>Актуальное расписание уточняйте у мастера — обычно найдём удобное время в течение 1–2 дней.</p>
+      <div class="avail-dots" aria-hidden="true">
+        <span class="avail-dot is-open"></span><span class="avail-dot is-open"></span><span class="avail-dot"></span>
+        <span class="avail-dot is-open"></span><span class="avail-dot"></span><span class="avail-dot is-open"></span><span class="avail-dot"></span>
+      </div>
+      <button class="btn btn-primary" data-open-booking>Записаться</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ПОРТФОЛИО ============================= -->
+<section id="portfolio">
+  <div class="container-wide reveal">
+    <div class="section-head">
+      <span class="eyebrow">Портфолио</span>
+      <h2>Работы студии</h2>
+    </div>
+  </div>
+  <div class="scroll-strip container-wide" id="portfolioStrip" tabindex="0" aria-label="Лента фото и видео с работами"></div>
+</section>
+
+<!-- ============================= КАК ПРОХОДИТ ПРОЦЕДУРА ============================= -->
+<section id="process">
+  <div class="container-wide reveal">
+    <div class="section-head">
+      <span class="eyebrow">Процедура</span>
+      <h2>Как всё проходит</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="diff-num">1</div>
+        <h3>Консультация</h3>
+        <p>Обсуждаем форму глаз, пожелания и подбираем эффект и изгиб под ваш образ.</p>
+      </div>
+      <div class="process-step">
+        <div class="diff-num">2</div>
+        <h3>Подготовка</h3>
+        <p>Очищаем и обезжириваем натуральные реснички, подбираем комфортное положение на кушетке.</p>
+      </div>
+      <div class="process-step">
+        <div class="diff-num">3</div>
+        <h3>Наращивание</h3>
+        <p>Мастер вручную формирует объём ресничка за ресничкой — можно вздремнуть под приятную музыку.</p>
+      </div>
+      <div class="process-step">
+        <div class="diff-num">4</div>
+        <h3>Рекомендации</h3>
+        <p>Рассказываем, как ухаживать за ресничками, и записываем на следующую коррекцию.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ОТЗЫВЫ ============================= -->
+<section id="reviews">
+  <div class="container-wide reveal">
+    <div class="section-head">
+      <span class="eyebrow">Отзывы</span>
+      <h2>Что говорят клиентки</h2>
+    </div>
+  </div>
+  <div class="scroll-strip container-wide" id="reviewsStrip" tabindex="0" aria-label="Лента отзывов клиенток"></div>
+</section>
+
+<!-- ============================= ОБО МНЕ ============================= -->
+<section id="about">
+  <div class="container reveal">
+    <div class="about-grid">
+      <div class="about-photo ph" data-file="assets/photos/about.webp">
+        <img src="assets/photos/about.webp" alt="Мастер студии LUMI" onerror="this.parentElement.classList.add('ph--err')">
+      </div>
+      <div class="about-text">
+        <span class="eyebrow">Обо мне</span>
+        <h2>Ваш мастер</h2>
+        <p>Меня зовут [Имя мастера]. Наращиванием ресниц занимаюсь больше 5 лет — начинала с классики, а сейчас предлагаю клиенткам все актуальные эффекты, от лёгкой классики до объёмного 3D.</p>
+        <p>Для меня важно не просто «сделать красиво», а подобрать эффект, который подойдёт именно вашей форме глаз и образу жизни — чтобы взгляд радовал каждый день, а не только на фото после процедуры.</p>
+        <div class="messenger-row">
+          <a class="msg-btn" href="#" id="linkWhatsapp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.4-4.6A8 8 0 1 1 9 18.6L4 20Z"/><path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.4 1-1v-1a.7.7 0 0 0-.6-.7l-1.6-.3a.7.7 0 0 0-.7.3l-.3.5a5 5 0 0 1-2.6-2.6l.5-.3a.7.7 0 0 0 .3-.7l-.3-1.6a.7.7 0 0 0-.7-.6h-1c-.6 0-1 .4-1 1Z"/></svg>
+            WhatsApp
+          </a>
+          <a class="msg-btn" href="#" id="linkTelegram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4 2.5 11.3c-.9.4-.9 1.6.1 1.9l4.2 1.3 1.6 5c.3.9 1.4 1.1 2 .4l2.4-2.6 4.5 3.3c.8.6 1.9.1 2.1-.8L22 5.2c.2-.9-.7-1.6-1-.9Z"/><path d="M7 14.5 17.5 7"/></svg>
+            Telegram
+          </a>
+          <a class="msg-btn" href="#" id="linkVk" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4c.3 8 4 13 11 13h1v-4c3 .3 4 2 5 4"/><path d="M17 4a10 10 0 0 1-4 6"/><path d="M8 10a10 10 0 0 0 4 6"/></svg>
+            VK
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ГДЕ НАХОДИМСЯ ============================= -->
+<section id="location">
+  <div class="container reveal">
+    <div class="location-grid">
+      <div class="location-photo ph" data-file="assets/photos/studio.webp">
+        <img src="assets/photos/studio.webp" alt="Интерьер студии LUMI" onerror="this.parentElement.classList.add('ph--err')">
+      </div>
+      <div class="location-text">
+        <span class="eyebrow">Где находимся</span>
+        <h2 style="margin-bottom:var(--sp-4)">Ждём в гости</h2>
+        <p class="addr" id="studioAddress">г. Москва, ул. Примерная, 12, студия LUMI</p>
+        <p>Ежедневно, 9:00–21:00</p>
+        <p>Домофон и вход со двора — точный маршрут пришлём после записи</p>
+        <div style="margin-top:var(--sp-4)">
+          <a class="btn btn-outline btn-sm" href="#" id="linkMap" target="_blank" rel="noopener">Построить маршрут</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FAQ ============================= -->
+<section id="faq">
+  <div class="container reveal">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Частые вопросы</h2>
+    </div>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<!-- ============================= ПАМЯТКА ПОСЛЕ ПРОЦЕДУРЫ ============================= -->
+<section id="aftercare">
+  <div class="container reveal">
+    <div class="section-head">
+      <span class="eyebrow">Памятка</span>
+      <h2>Уход после процедуры</h2>
+    </div>
+    <div class="care-card glass">
+      <ul class="care-list">
+        <li><span class="care-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff8f0" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><p>Не мочите реснички первые 24 часа после процедуры</p></li>
+        <li><span class="care-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff8f0" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><p>Не трите глаза и старайтесь не спать лицом в подушку</p></li>
+        <li><span class="care-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff8f0" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><p>Расчёсывайте реснички щёточкой каждое утро</p></li>
+        <li><span class="care-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff8f0" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><p>Не используйте средства для снятия макияжа на масляной основе</p></li>
+        <li><span class="care-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff8f0" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><p>Избегайте бани, сауны и парилки первые двое суток</p></li>
+        <li><span class="care-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff8f0" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><p>Приходите на коррекцию каждые 2–3 недели — так взгляд останется густым</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="referral-card reveal">
+      <h3>Приведи подругу 💛</h3>
+      <p>Запишите подругу на первое наращивание — вы обе получите скидку 500 ₽ на следующую процедуру.</p>
+      <button class="btn btn-primary" data-open-booking>Записаться</button>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="logo" href="#top">LUMI<small>lash studio</small></a>
+        <p style="margin-top:var(--sp-4)">Авторское наращивание ресниц в тёплой, уютной атмосфере.</p>
+        <div class="social-row">
+          <a class="social-btn" href="#" id="linkInstagram" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="social-btn" href="#" id="linkVk2" target="_blank" rel="noopener" aria-label="VK">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4c.3 8 4 13 11 13h1v-4c3 .3 4 2 5 4"/><path d="M17 4a10 10 0 0 1-4 6"/><path d="M8 10a10 10 0 0 0 4 6"/></svg>
+          </a>
+          <a class="social-btn" href="#" id="linkTelegram2" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 4 2.5 11.3c-.9.4-.9 1.6.1 1.9l4.2 1.3 1.6 5c.3.9 1.4 1.1 2 .4l2.4-2.6 4.5 3.3c.8.6 1.9.1 2.1-.8L22 5.2c.2-.9-.7-1.6-1-.9Z"/><path d="M7 14.5 17.5 7"/></svg>
+          </a>
+          <a class="social-btn" href="#" id="linkWhatsapp2" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4.6A8 8 0 1 1 9 18.6L4 20Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="#" id="linkPhone">+7 (999) 123-45-67</a></li>
+          <li><span id="footerAddress">г. Москва, ул. Примерная, 12</span></li>
+          <li><span>Ежедневно, 9:00–21:00</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Студия</h4>
+        <ul>
+          <li><a href="#catalog">Эффекты и цены</a></li>
+          <li><a href="#portfolio">Портфолио</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> LUMI. Все права защищены.</span>
+      <span>Дизайн и вёрстка — авторская работа</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================= МОДАЛКА ЗАПИСИ ============================= -->
+<div class="modal-backdrop" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+  <div class="modal glass-strong">
+    <button class="modal-close" data-close-modal aria-label="Закрыть">✕</button>
+    <h3 id="bookingTitle">Как вам удобно записаться?</h3>
+    <p>Выберите способ связи — ответим в течение 15 минут в рабочее время.</p>
+    <div class="modal-actions">
+      <a class="btn btn-primary btn-block" id="bookWhatsapp" href="#" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      <a class="btn btn-ghost btn-block" id="bookTelegram" href="#" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="btn btn-outline btn-block" id="bookPhone" href="#">Позвонить</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= МОДАЛКА ОТЗЫВА ============================= -->
+<div class="modal-backdrop" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+  <div class="modal glass-strong">
+    <button class="modal-close" data-close-modal aria-label="Закрыть">✕</button>
+    <div class="rv-head">
+      <div class="rv-avatar" id="reviewAvatar"></div>
+      <div>
+        <div class="rv-name" id="reviewTitle"></div>
+        <div class="rv-stars" id="reviewStars"></div>
+      </div>
+    </div>
+    <p id="reviewText" style="-webkit-line-clamp:unset"></p>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* =========================================================================
+   НАСТРОЙКИ САЙТА — замените плейсхолдеры на реальные данные студии.
+   Значения используются в шапке, подвале, кнопках "Записаться" и т.д.
+   ========================================================================= */
+const CONFIG = {
+  phone: '+7 (999) 123-45-67',
+  phoneHref: 'tel:+79991234567',
+  whatsapp: 'https://wa.me/79991234567',
+  telegram: 'https://t.me/lumi_lash_studio',
+  vk: 'https://vk.com/lumi_lash_studio',
+  instagram: 'https://instagram.com/lumi_lash_studio',
+  address: 'г. Москва, ул. Примерная, 12, студия LUMI',
+  mapUrl: 'https://yandex.ru/maps/?text=' + encodeURIComponent('г. Москва, ул. Примерная, 12')
+};
+
+document.getElementById('linkWhatsapp').href = CONFIG.whatsapp;
+document.getElementById('linkWhatsapp2').href = CONFIG.whatsapp;
+document.getElementById('linkTelegram').href = CONFIG.telegram;
+document.getElementById('linkTelegram2').href = CONFIG.telegram;
+document.getElementById('linkVk').href = CONFIG.vk;
+document.getElementById('linkVk2').href = CONFIG.vk;
+document.getElementById('linkInstagram').href = CONFIG.instagram;
+document.getElementById('linkPhone').href = CONFIG.phoneHref;
+document.getElementById('linkPhone').textContent = CONFIG.phone;
+document.getElementById('linkMap').href = CONFIG.mapUrl;
+document.getElementById('studioAddress').textContent = CONFIG.address;
+document.getElementById('footerAddress').textContent = CONFIG.address;
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.getElementById('bookWhatsapp').href = CONFIG.whatsapp;
+document.getElementById('bookTelegram').href = CONFIG.telegram;
+document.getElementById('bookPhone').href = CONFIG.phoneHref;
+
+/* ============================= ДАННЫЕ: ЭФФЕКТЫ ============================= */
+const EFFECTS = [
+  { id:'classic', label:'Классика', price:'от 2 500 ₽', duration:'1,5–2 часа', photo:'assets/photos/effect-classic.webp',
+    desc:'Одна ресничка на одну натуральную — деликатный, естественный объём для тех, кто ценит лёгкость и натуральность взгляда.' },
+  { id:'wet', label:'Мокрый эффект', price:'от 3 000 ₽', duration:'2–2,5 часа', photo:'assets/photos/effect-wet.webp',
+    desc:'Эффект влажных, слегка растрёпанных ресниц — трендовый выразительный вид без ощущения «накладных» ресниц.' },
+  { id:'1-5d', label:'1,5D', price:'от 3 200 ₽', duration:'2–2,5 часа', photo:'assets/photos/effect-1-5d.webp',
+    desc:'Промежуточный объём между классикой и 2D — заметная густота ресниц при сохранении естественности.' },
+  { id:'2d', label:'2D', price:'от 3 500 ₽', duration:'2,5–3 часа', photo:'assets/photos/effect-2d.webp',
+    desc:'Пышный, объёмный взгляд за счёт двух ресничек в пучке — выразительно, но легко.' },
+  { id:'3d', label:'3D', price:'от 4 000 ₽', duration:'3 часа', photo:'assets/photos/effect-3d.webp',
+    desc:'Максимальный объём и глубина цвета — эффектный образ для тех, кто любит по-настоящему выразительный взгляд.' }
+];
+
+const tabsEl = document.getElementById('effectTabs');
+const panelEl = document.getElementById('effectPanel');
+
+function renderEffectTabs(activeId){
+  tabsEl.innerHTML = EFFECTS.map(function(e){
+    return '<button class="tab-btn'+(e.id===activeId?' is-active':'')+'" role="tab" aria-selected="'+(e.id===activeId)+'" data-effect="'+e.id+'">'+e.label+'</button>';
+  }).join('');
+}
+
+function renderEffectPanel(id){
+  const e = EFFECTS.find(function(x){ return x.id === id; });
+  panelEl.innerHTML =
+    '<div class="tab-panel-media ph" data-file="'+e.photo+'">' +
+      '<img src="'+e.photo+'" alt="Эффект «'+e.label+'»" onerror="this.parentElement.classList.add(\'ph--err\')">' +
+    '</div>' +
+    '<div class="tab-panel-body">' +
+      '<h3>'+e.label+'</h3>' +
+      '<div class="tab-panel-price">'+e.price+' <span class="duration">· '+e.duration+'</span></div>' +
+      '<p>'+e.desc+'</p>' +
+      '<button class="btn btn-primary" data-open-booking>Записаться на «'+e.label+'»</button>' +
+    '</div>';
+}
+
+tabsEl.addEventListener('click', function(ev){
+  const btn = ev.target.closest('.tab-btn');
+  if(!btn) return;
+  const id = btn.dataset.effect;
+  renderEffectTabs(id);
+  renderEffectPanel(id);
+});
+
+renderEffectTabs(EFFECTS[0].id);
+renderEffectPanel(EFFECTS[0].id);
+
+/* ============================= ДАННЫЕ: ПОРТФОЛИО ============================= */
+const pf = [];
+function addPhotos(from,to){
+  for(let i=from;i<=to;i++){
+    pf.push({ type:'photo', file:'assets/photos/portfolio-'+String(i).padStart(2,'0')+'.webp' });
+  }
+}
+addPhotos(1,5);
+pf.push({ type:'video', file:'assets/video/video-01.mp4' });
+addPhotos(6,11);
+pf.push({ type:'video', file:'assets/video/video-02.mp4' });
+addPhotos(12,17);
+pf.push({ type:'video', file:'assets/video/video-03.mp4' });
+addPhotos(18,22);
+
+const pfStrip = document.getElementById('portfolioStrip');
+pfStrip.innerHTML = pf.map(function(item){
+  if(item.type === 'video'){
+    return '<div class="pf-item is-video ph" data-file="'+item.file+'">' +
+      '<video muted loop playsinline preload="metadata" onerror="this.parentElement.classList.add(\'ph--err\')">' +
+      '<source src="'+item.file+'" type="video/mp4"></video></div>';
+  }
+  return '<div class="pf-item ph" data-file="'+item.file+'">' +
+    '<img src="'+item.file+'" alt="Работа студии LUMI" loading="lazy" onerror="this.parentElement.classList.add(\'ph--err\')"></div>';
+}).join('');
+
+/* автовоспроизведение видео в портфолио при появлении в области видимости */
+const pfVideos = pfStrip.querySelectorAll('video');
+if('IntersectionObserver' in window){
+  const videoObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      const v = entry.target;
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.6){
+        v.play().catch(function(){});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold:[0,0.6,1] });
+  pfVideos.forEach(function(v){ videoObserver.observe(v); });
+}
+
+/* ============================= ДАННЫЕ: ОТЗЫВЫ ============================= */
+const REVIEWS = [
+  { name:'Анна', stars:5, text:'Хожу в LUMI уже больше года и ни разу не разочаровалась! Мастер всегда подберёт эффект под настроение и форму глаз, реснички держатся стабильно по 3 недели без нареканий. Отдельно радует уютная, тёплая атмосфера студии — прихожу как на маленький отдых, а не просто на процедуру.' },
+  { name:'Мария', stars:5, text:'Долго боялась наращивания после неудачного опыта в другом месте, но здесь всё оказалось совсем иначе. Мастер подробно расспросила про мои реснички, подобрала лёгкий эффект и материалы. Через месяц свои реснички даже не пострадали — коррекцию делаю регулярно, результат стабильно радует.' },
+  { name:'Екатерина', stars:5, text:'Очень аккуратная работа, ресничка к ресничке, никакого дискомфорта во время процедуры. Спала почти всё время, пока мастер работала — три часа пролетели незаметно. Взгляд после наращивания преобразился полностью, все знакомые спрашивают, где я это делаю.' },
+  { name:'Ольга', stars:5, text:'Перепробовала несколько студий в городе, но именно здесь нашла своего мастера. Всегда подскажет, какой эффект подойдёт под конкретное мероприятие или просто на каждый день. Материалы явно качественные — глаза не слезятся и не чешутся, чего не могу сказать про предыдущий опыт.' },
+  { name:'Виктория', stars:4, text:'В целом очень довольна результатом — объём именно такой, как хотела, продержался почти месяц. Единственное — пришлось немного подождать своей записи, но мастер предупредила заранее и результат того стоил.' },
+  { name:'Дарья', stars:5, text:'Хочу отметить не только качество работы, но и атмосферу в студии — очень уютно, приятная музыка, чай перед процедурой. Мастер настоящий профессионал: сразу видно, кто разбирается в форме глаз и умеет визуально скорректировать взгляд с помощью правильного эффекта.' }
+];
+
+const rvStrip = document.getElementById('reviewsStrip');
+rvStrip.innerHTML = REVIEWS.map(function(r,i){
+  return '<div class="rv-item glass">' +
+    '<div class="rv-head">' +
+      '<div class="rv-avatar">'+r.name.charAt(0)+'</div>' +
+      '<div><div class="rv-name">'+r.name+'</div><div class="rv-stars">'+'★'.repeat(r.stars)+'☆'.repeat(5-r.stars)+'</div></div>' +
+    '</div>' +
+    '<p class="rv-text">'+r.text+'</p>' +
+    '<button class="rv-more" data-review="'+i+'">Читать полностью →</button>' +
+  '</div>';
+}).join('');
+
+const reviewModal = document.getElementById('reviewModal');
+rvStrip.addEventListener('click', function(ev){
+  const btn = ev.target.closest('.rv-more');
+  if(!btn) return;
+  const r = REVIEWS[Number(btn.dataset.review)];
+  document.getElementById('reviewAvatar').textContent = r.name.charAt(0);
+  document.getElementById('reviewTitle').textContent = r.name;
+  document.getElementById('reviewStars').textContent = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+  document.getElementById('reviewText').textContent = r.text;
+  openModal(reviewModal, btn);
+});
+
+/* ============================= ДАННЫЕ: FAQ ============================= */
+const FAQ = [
+  { q:'Сколько держится наращивание?', a:'В среднем эффект сохраняется 3–4 недели в зависимости от скорости роста ваших ресничек и ухода. Рекомендуем приходить на коррекцию каждые 2–3 недели.' },
+  { q:'Вредно ли наращивание для своих ресничек?', a:'При соблюдении технологии и качественных материалах — нет. Мы работаем поресничным методом с лёгким гипоаллергенным клеем, который не утяжеляет и не травмирует натуральные реснички.' },
+  { q:'Можно ли наращивать, если чувствительные глаза или аллергия?', a:'Да, но заранее предупредите мастера — подберём гипоаллергенные материалы или сделаем тест на реакцию за сутки до процедуры.' },
+  { q:'Можно ли мочить и красить реснички после наращивания?', a:'В первые 24 часа желательно избегать воды и пара. Дальше — почти без ограничений: можно умываться и плавать, кроме использования жирных средств для снятия макияжа.' },
+  { q:'Сколько по времени длится процедура?', a:'От 1,5 до 3 часов в зависимости от выбранного эффекта — можно расслабиться и даже вздремнуть под музыку.' },
+  { q:'Как подготовиться к наращиванию?', a:'Приходите без макияжа на глазах; если носите линзы — принесите футляр. Постарайтесь не пить кофе и энергетики перед процедурой, так реснички ложатся аккуратнее.' }
+];
+
+document.getElementById('faqList').innerHTML = FAQ.map(function(item,i){
+  return '<div class="faq-item">' +
+    '<button class="faq-q" aria-expanded="false" aria-controls="faq-a-'+i+'">' +
+      '<span>'+item.q+'</span><span class="faq-icon" aria-hidden="true"></span>' +
+    '</button>' +
+    '<div class="faq-a" id="faq-a-'+i+'"><div class="faq-a-inner"><p>'+item.a+'</p></div></div>' +
+  '</div>';
+}).join('');
+
+document.getElementById('faqList').addEventListener('click', function(ev){
+  const btn = ev.target.closest('.faq-q');
+  if(!btn) return;
+  const item = btn.closest('.faq-item');
+  const open = item.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', String(open));
+});
+
+/* ============================= ШАПКА: СОСТОЯНИЕ ПРИ СКРОЛЛЕ ============================= */
+const headerEl = document.querySelector('.site-header');
+let ticking = false;
+window.addEventListener('scroll', function(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    headerEl.classList.toggle('is-scrolled', window.scrollY > 8);
+    ticking = false;
+  });
+}, { passive:true });
+
+/* ============================= ПЕРЕТАСКИВАНИЕ ЛЕНТ МЫШЬЮ ============================= */
+function makeDraggable(el){
+  let isDown = false, moved = false, startX = 0, startScroll = 0;
+  el.addEventListener('pointerdown', function(e){
+    if(e.pointerType !== 'mouse') return;
+    isDown = true; moved = false;
+    startX = e.clientX; startScroll = el.scrollLeft;
+    el.setPointerCapture(e.pointerId);
+  });
+  el.addEventListener('pointermove', function(e){
+    if(!isDown) return;
+    const dx = e.clientX - startX;
+    if(Math.abs(dx) > 4){ moved = true; el.classList.add('dragging'); }
+    el.scrollLeft = startScroll - dx;
+  });
+  function release(){ isDown = false; el.classList.remove('dragging'); }
+  el.addEventListener('pointerup', release);
+  el.addEventListener('pointercancel', release);
+  el.addEventListener('click', function(e){
+    if(moved){ e.preventDefault(); e.stopPropagation(); moved = false; }
+  }, true);
+}
+document.querySelectorAll('.scroll-strip').forEach(makeDraggable);
+
+/* ============================= МОДАЛЬНЫЕ ОКНА ============================= */
+let lastFocused = null;
+function openModal(modal, trigger){
+  lastFocused = trigger || document.activeElement;
+  modal.classList.add('is-open');
+  const focusable = modal.querySelector('button, a');
+  if(focusable) focusable.focus();
+  document.addEventListener('keydown', onModalKeydown);
+}
+function closeModal(modal){
+  modal.classList.remove('is-open');
+  document.removeEventListener('keydown', onModalKeydown);
+  if(lastFocused) lastFocused.focus();
+}
+function onModalKeydown(e){
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal-backdrop.is-open').forEach(closeModal);
+  }
+}
+document.addEventListener('click', function(e){
+  const trigger = e.target.closest('[data-open-booking]');
+  if(trigger) openModal(document.getElementById('bookingModal'), trigger);
+});
+document.querySelectorAll('.modal-backdrop').forEach(function(backdrop){
+  backdrop.addEventListener('click', function(e){
+    if(e.target === backdrop) closeModal(backdrop);
+  });
+  backdrop.querySelectorAll('[data-close-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(){ closeModal(backdrop); });
+  });
+});
+
+/* ============================= SCROLL REVEAL ============================= */
+if('IntersectionObserver' in window){
+  const revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
+}
+</script>
+</body>
+</html>
